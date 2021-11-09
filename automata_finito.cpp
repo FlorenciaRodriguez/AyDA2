@@ -4,7 +4,8 @@
 
 using namespace std;
 
-bool es_sufijo(char P[],int k,int q,char s){
+bool es_sufijo(char P[],int k,int q,char s)
+{
   string ending="" ;
   for (int i=0;i<k;i++)
       ending = ending+P[i];
@@ -20,7 +21,8 @@ bool es_sufijo(char P[],int k,int q,char s){
 }
 
 // P el patrón; S arreglo con las cadenas del lenguaje
-void compute_transition_function(char P[],char S[],int D[5][3]){
+void compute_transition_function(char P[],char S[],int D[5][3])
+{
   
   int m = strlen(P);
   int n = strlen(S);

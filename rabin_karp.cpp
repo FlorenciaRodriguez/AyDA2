@@ -5,15 +5,17 @@
 using namespace std;
 using std::pow;
 
+// d tiene que ser un número mayor a la cantidad de caracteres del lenguaje
 #define d 256
 
+// q tiene que ser un número primo
 void rabin_karp_matcher(char T[],char P[],int q) {
     
-    int h_t = 0;
-    int h_p = 0;
-    int m = strlen(P);
-    int n = strlen(T);
-    int h=1;
+    int h_t = 0; // hash de texto T
+    int h_p = 0; // hash de patron P
+    int m = strlen(P); // tamaño de P
+    int n = strlen(T); // tamaño de T
+    int h=1; 
     
     // pow(d,M-1) % q
     for (int i = 0; i < m - 1; i++)

@@ -37,20 +37,6 @@ void Grafo<TipoVertice, TipoArco>::agregarVertice(const TipoVertice & o) {
     this->nnodos+=1;
     
 }
-/****
-template <class TipoVertice, class TipoArco>
-void Grafo<TipoVertice, TipoArco>::listar() const {
-    Nodo * temp = this->inicio;
-    while (temp != nullptr){
-        Arco * aux = temp->ady;
-        while(aux != nullptr){
-            std::cout << temp->etiqueta << "-" << aux->valor << "->" << aux->destino->etiqueta << std::endl;
-            aux = aux->sig;
-        }
-        temp = temp->sig;
-    }
-}
-  */
 template <class TipoVertice, class TipoArco>
 void Grafo<TipoVertice, TipoArco>::agregarArco(const TipoVertice & o, const TipoVertice & d, const TipoArco & peso){
     
@@ -75,7 +61,6 @@ void Grafo<TipoVertice, TipoArco>::agregarArco(const TipoVertice & o, const Tipo
         tempOrigen->adyacencias+=1;
         tempDestino->incidencias+=1;
         tempOrigen->ady = nuevoArco;
-        std::cout<<"pasa"<<std::endl;
     } else {
         Arco* aux = tempOrigen->ady;
         bool existeArco=false;
@@ -105,11 +90,7 @@ TipoVertice* Grafo<TipoVertice, TipoArco>::obtenerVertices() const {
         temp = temp->sig;
         i+=1;
     }
-    /**
-    std::cout<<"Vertices"<<std::endl;
-    for (int j=0;j<=this->nnodos;j++)
-            std::cout<<vertices[j]<<std::endl;
-     */
+    
     return vertices;
 }
 
@@ -129,10 +110,7 @@ TipoVertice* Grafo<TipoVertice, TipoArco>::obtenerAdyacentes(const TipoVertice &
             arcos[i] = aux->destino->etiqueta;
             aux = aux->sig;
             i++;
-        }/**
-        std::cout<<"Adyacentes: "<<std::endl;
-        for (int j=0;j<temp->adyacencias;j++)
-            std::cout<<arcos[j]<<std::endl;**/
+        }
         return arcos;
     } else {
         return nullptr;

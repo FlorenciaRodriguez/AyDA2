@@ -31,7 +31,6 @@ private:
 public:
     Grafo();
     void agregarVertice(const T & dato);
-    //void listar() const;
     void agregarArco(const T & o,const T & d, const C & peso);
     T* obtenerVertices() const;
     T* obtenerAdyacentes(const T & etiqueta) const;

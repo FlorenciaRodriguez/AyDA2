@@ -11,6 +11,6 @@ int main(int argc, char **argv)
 	g->agregarVertice(2);
 	g->agregarVertice(1);
     g->agregarArco(2,3,6);
-    
+    g->obtenerAdyacentes(2);
     return 0;
 };

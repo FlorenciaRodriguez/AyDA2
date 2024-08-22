@@ -15,6 +15,8 @@ private:
         int nodo;
         Nodo *sig;
         Arco *ady;
+        int incidencias;
+        int adyacencias;
     };
     
     struct Arco
@@ -31,8 +33,8 @@ public:
     void agregarVertice(const T & dato);
     //void listar() const;
     void agregarArco(const T & o,const T & d, const C & peso);
-    std::map<int, T> obtenerVertices() const;
-    std::map<T, C> obtenerArcos(const T & etiqueta) const;
+    T* obtenerVertices() const;
+    T* obtenerAdyacentes(const T & etiqueta) const;
 };
 
 #endif /* GRAFO_H_ */

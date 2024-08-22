@@ -32,6 +32,8 @@ public:
     void agregarArco(const T &o, const T &d, const C &peso);
     T *obtenerVertices() const;
     T *obtenerAdyacentes(const T &etiqueta) const;
+    int obtenerPosDelVertice(const T &etiqueta) const;
+    int getNumeroVertices() const;
 };
 
 #endif /* GRAFO_H_ */

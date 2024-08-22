@@ -105,6 +105,22 @@ TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerVertices() const
 
     return vertices;
 }
+template <class TipoVertice, class TipoArco>
+int Grafo<TipoVertice, TipoArco>:: getNumeroVertices() const{
+    return this->nnodos;
+}
+template <class TipoVertice, class TipoArco>
+int Grafo<TipoVertice, TipoArco>::obtenerPosDelVertice(const TipoVertice &etiqueta) const{
+   Nodo*temp = this->inicio;
+   int posVertice=0;
+   while (temp!=nullptr && temp->etiqueta!=etiqueta){
+    temp=temp->sig;
+    posVertice+=1;
+   }
+   assert(temp!=nullptr && temp->etiqueta==etiqueta);
+   return posVertice;
+
+}
 
 template <class TipoVertice, class TipoArco>
 TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerAdyacentes(const TipoVertice &etiqueta) const

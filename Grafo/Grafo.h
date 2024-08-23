@@ -34,6 +34,7 @@ public:
     T *obtenerAdyacentes(const T &etiqueta) const;
     int obtenerPosDelVertice(const T &etiqueta) const;
     int getNumeroVertices() const;
+    int getNumAdyacentes(const T &etiqueta) const;
 };
 
 #endif /* GRAFO_H_ */

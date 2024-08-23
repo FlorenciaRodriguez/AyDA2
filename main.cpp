@@ -16,25 +16,14 @@ int main(int argc, char **argv)
     g->agregarVertice('j');
 	g->agregarArco('a', 'b', 1);
     g->agregarArco('b', 'c', 2);
-    g->agregarArco('d', 'b', 1);
+	g->agregarArco('c', 'e', 1);
     g->agregarArco('d', 'c', 2);
+	g->agregarArco('d', 'a', 2);
     g->agregarArco('e', 'd', 3);
-    g->agregarArco('f', 'c', 2);
+    g->agregarArco('c', 'f', 2);
     g->agregarArco('h', 'j', 2);
+
 	dfsForest<char,int>(g);
+	
 	return 0;
 }
-
-/****
-int main(int argc, char **argv)
-{
-	Grafo<int, int> *g = new Grafo<int, int>;
-
-	g->agregarVertice(5);
-	g->agregarVertice(3);
-	g->agregarVertice(2);
-	g->agregarVertice(1);
-	g->agregarArco(2, 3, 6);
-	g->obtenerAdyacentes(2);
-	return 0;
-};*/

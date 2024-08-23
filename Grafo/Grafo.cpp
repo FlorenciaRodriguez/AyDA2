@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cassert>
 template <class TipoVertice, class TipoArco>
+
 Grafo<TipoVertice, TipoArco>::Grafo()
 {
     this->inicio = nullptr;
@@ -42,10 +43,11 @@ void Grafo<TipoVertice, TipoArco>::agregarVertice(const TipoVertice &o)
     }
     this->nnodos += 1;
 }
+
 template <class TipoVertice, class TipoArco>
 void Grafo<TipoVertice, TipoArco>::agregarArco(const TipoVertice &o, const TipoVertice &d, const TipoArco &peso)
 {
-
+    // Buscar el nodo origen
     Nodo *tempOrigen = this->inicio;
     while (tempOrigen != nullptr && tempOrigen->etiqueta != o)
     {
@@ -53,6 +55,7 @@ void Grafo<TipoVertice, TipoArco>::agregarArco(const TipoVertice &o, const TipoV
     }
     assert(tempOrigen != nullptr && tempOrigen->etiqueta == o);
 
+    // Buscar el nodo destino
     Nodo *tempDestino = this->inicio;
     while (tempDestino != nullptr && tempDestino->etiqueta != d)
     {
@@ -60,34 +63,33 @@ void Grafo<TipoVertice, TipoArco>::agregarArco(const TipoVertice &o, const TipoV
     }
     assert(tempDestino != nullptr && tempDestino->etiqueta == d);
 
+    // Verificar si ya existe un arco entre o y d
+    Arco *aux = tempOrigen->ady;
+    bool existeArco = false;
+    while (aux != nullptr && !existeArco)
+    {
+        if (aux->destino->etiqueta == d)
+            existeArco = true;
+        aux = aux->sig;
+    }
+    
+    assert(!existeArco);
+
     Arco *nuevoArco = new Arco;
     nuevoArco->valor = peso;
-    nuevoArco->sig = nullptr;
     nuevoArco->destino = tempDestino;
+    nuevoArco->sig = nullptr;
 
+    // Insertar el arco al final de la lista de adyacencias
     if (tempOrigen->ady == nullptr)
-    {
-        tempOrigen->adyacencias += 1;
-        tempDestino->incidencias += 1;
         tempOrigen->ady = nuevoArco;
-    }
     else
     {
-        Arco *aux = tempOrigen->ady;
-        bool existeArco = false;
-        while (aux->sig != nullptr && !existeArco)
-        {
-            if (aux->destino->etiqueta == d)
-                existeArco = true;
-            aux = aux->sig;
-        }
-
-        assert(!existeArco);
-
-        nuevoArco->destino->incidencias += 1;
-        aux->sig = nuevoArco;
-        tempOrigen->adyacencias += 1;
+        nuevoArco->sig = tempOrigen->ady;
+        tempOrigen->ady = nuevoArco;
     }
+    tempOrigen->adyacencias += 1;
+    tempDestino->incidencias += 1;
 }
 
 template <class TipoVertice, class TipoArco>
@@ -105,21 +107,34 @@ TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerVertices() const
 
     return vertices;
 }
+
 template <class TipoVertice, class TipoArco>
 int Grafo<TipoVertice, TipoArco>:: getNumeroVertices() const{
     return this->nnodos;
 }
+
 template <class TipoVertice, class TipoArco>
 int Grafo<TipoVertice, TipoArco>::obtenerPosDelVertice(const TipoVertice &etiqueta) const{
    Nodo*temp = this->inicio;
    int posVertice=0;
    while (temp!=nullptr && temp->etiqueta!=etiqueta){
+    
     temp=temp->sig;
     posVertice+=1;
    }
    assert(temp!=nullptr && temp->etiqueta==etiqueta);
    return posVertice;
 
+}
+
+template <class TipoVertice, class TipoArco>
+int  Grafo<TipoVertice, TipoArco>::getNumAdyacentes(const TipoVertice &etiqueta) const
+{
+    Nodo*temp = this->inicio;
+    while (temp!=nullptr && temp->etiqueta!=etiqueta)
+        temp=temp->sig;
+    assert(temp!=nullptr && temp->etiqueta==etiqueta);
+    return temp->adyacencias;
 }
 
 template <class TipoVertice, class TipoArco>
@@ -132,7 +147,7 @@ TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerAdyacentes(const TipoVertice &
         temp = temp->sig;
     }
 
-    if (temp != nullptr)
+    if (temp != nullptr && temp->adyacencias>0)
     {
         TipoVertice *arcos = new TipoVertice[temp->adyacencias];
         int i = 0;
@@ -142,6 +157,7 @@ TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerAdyacentes(const TipoVertice &
             arcos[i] = aux->destino->etiqueta;
             aux = aux->sig;
             i++;
+            
         }
         return arcos;
     }

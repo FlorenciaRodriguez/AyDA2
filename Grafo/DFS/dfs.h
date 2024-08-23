@@ -2,7 +2,7 @@
 #define DFS_H_
 #include <iostream>
 
-#include "Grafo.cpp"
+#include "Grafo.h"
 using namespace std;
 
 enum Estado

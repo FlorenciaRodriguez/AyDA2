@@ -52,49 +52,49 @@ DFS_Visitar(Grafo g, Vertice v)
 
 ![](img/Grafos-DFS.png)
 
-![](img/Grafos-DFS(1).png)
+![](img/Grafos-DFS%20(1).png)
 
-![](img/Grafos-DFS(2).png)
-
-
-![](img/Grafos-DFS(3).png)
+![](img/Grafos-DFS%20(2).png)
 
 
-![](img/Grafos-DFS(4).png)
+![](img/Grafos-DFS%20(3).png)
 
-![](img/Grafos-DFS(5).png)
 
-![](img/Grafos-DFS(6).png)
+![](img/Grafos-DFS%20(4).png)
 
-![](img/Grafos-DFS(7).png)
+![](img/Grafos-DFS%20(5).png)
 
-![](img/Grafos-DFS(8).png)
+![](img/Grafos-DFS%20(6).png)
 
-![](img/Grafos-DFS(9).png)
+![](img/Grafos-DFS%20(7).png)
 
-![](img/Grafos-DFS(10).png)
+![](img/Grafos-DFS%20(8).png)
 
-![](img/Grafos-DFS(11).png)
+![](img/Grafos-DFS%20(9).png)
 
-![](img/Grafos-DFS(12).png)
+![](img/Grafos-DFS%20(10).png)
 
-![](img/Grafos-DFS(13).png)
+![](img/Grafos-DFS%20(11).png)
 
-![](img/Grafos-DFS(14).png)
+![](img/Grafos-DFS%20(12).png)
 
-![](img/Grafos-DFS(15).png)
+![](img/Grafos-DFS%20(13).png)
 
-![](img/Grafos-DFS(16).png)
+![](img/Grafos-DFS%20(14).png)
 
-![](img/Grafos-DFS(17).png)
+![](img/Grafos-DFS%20(15).png)
 
-![](img/Grafos-DFS(18).png)
+![](img/Grafos-DFS%20(16).png)
 
-![](img/Grafos-DFS(19).png)
+![](img/Grafos-DFS%20(17).png)
 
-![](img/Grafos-DFS(20).png)
+![](img/Grafos-DFS%20(18).png)
 
-![](img/Grafos-DFS(21).png)
+![](img/Grafos-DFS%20(19).png)
+
+![](img/Grafos-DFS%20(20).png)
+
+![](img/Grafos-DFS%20(21).png)
 
 
 

@@ -8,6 +8,22 @@ Grafo<TipoVertice, TipoArco>::Grafo()
     this->inicio = nullptr;
     this->nnodos = 0;
 }
+template <class TipoVertice, class TipoArco>
+Grafo<TipoVertice, TipoArco>::~Grafo() {
+    Nodo *tempNodo = inicio;
+    while (tempNodo != nullptr) {
+        Arco *tempArco = tempNodo->ady;
+        while (tempArco != nullptr) {
+            Arco *arcoAEliminar = tempArco;
+            tempArco = tempArco->sig;
+            delete arcoAEliminar;
+        }
+        
+        Nodo *nodoAEliminar = tempNodo;
+        tempNodo = tempNodo->sig;
+        delete nodoAEliminar;
+    }
+}
 
 template <class TipoVertice, class TipoArco>
 void Grafo<TipoVertice, TipoArco>::agregarVertice(const TipoVertice &o)

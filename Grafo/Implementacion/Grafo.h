@@ -28,6 +28,7 @@ private:
 
 public:
     Grafo();
+    ~Grafo();
     void agregarVertice(const T &dato);
     void agregarArco(const T &o, const T &d, const C &peso);
     T *obtenerVertices() const;

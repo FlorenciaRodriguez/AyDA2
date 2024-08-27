@@ -73,7 +73,7 @@ void dfsForest(Grafo<TipoVertice, TipoArco> *g)
     }
 
     // Imprimir resultados
-    /**
+    
     std::cout << "Vertices:\t";
     for (int i = 0; i < numVertices; i++)
     {
@@ -95,7 +95,11 @@ void dfsForest(Grafo<TipoVertice, TipoArco> *g)
         std::cout << finalizacion[i] << "  |\t";
     }
     std::cout<<std::endl;
-    **/
+    delete[] finalizacion;
+    delete[] descubrimiento;
+    delete[] padres;
+    delete[] estado;
+
 }
 
 #endif /* DFS_H_ */

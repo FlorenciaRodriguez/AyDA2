@@ -250,7 +250,7 @@ void dfsForestSimple(Grafo<TipoVertice, TipoArco> *g)
 }
 /***********
  *
- * * Versión solo recorrido *
+ * * Detección de ciclo simple *
  *
  * ************ */
 template <class TipoVertice, class TipoArco>
@@ -259,7 +259,7 @@ bool dfsCiclo(Grafo<TipoVertice, TipoArco> *g, int v, Estado *estado)
     bool encuentraCiclo = false;
     estado[v] = VISITADO;
 
-    // Recorrido de adyacentes
+
     TipoVertice *adyacentes = g->obtenerAdyacentesPos(v);
     int nAdyacentes = g->getNumAdyacentesPos(v);
     int i = 0;

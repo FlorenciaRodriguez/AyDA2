@@ -6,7 +6,9 @@ template <class TipoVertice, class TipoArco>
 Grafo<TipoVertice, TipoArco>::Grafo()
 {
     this->inicio = nullptr;
-    this->nnodos = 0;
+    this->nVertices = 0;
+    this->nArcos = 0;
+    this->grado=0;
 }
 template <class TipoVertice, class TipoArco>
 Grafo<TipoVertice, TipoArco>::~Grafo() {
@@ -57,7 +59,7 @@ void Grafo<TipoVertice, TipoArco>::agregarVertice(const TipoVertice &o)
         assert(!existeVertice);
         temp->sig = nuevoNodo;
     }
-    this->nnodos += 1;
+    this->nVertices += 1;
 }
 
 template <class TipoVertice, class TipoArco>
@@ -106,12 +108,17 @@ void Grafo<TipoVertice, TipoArco>::agregarArco(const TipoVertice &o, const TipoV
     }
     tempOrigen->adyacencias += 1;
     tempDestino->incidencias += 1;
+    this->nArcos+=1;
+    if (tempDestino->incidencias+tempDestino->adyacencias > this->grado)
+    this->grado=tempDestino->incidencias+tempDestino->adyacencias;
+    if (tempOrigen->adyacencias+tempOrigen->incidencias > this->grado)
+    this->grado = tempOrigen->adyacencias+tempOrigen->incidencias;
 }
 
 template <class TipoVertice, class TipoArco>
 TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerVertices() const
 {
-    TipoVertice *vertices = new TipoVertice[this->nnodos];
+    TipoVertice *vertices = new TipoVertice[this->nVertices];
     int i = 0;
     Nodo *temp = this->inicio;
     while (temp != nullptr)
@@ -123,10 +130,25 @@ TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerVertices() const
 
     return vertices;
 }
+template <class TipoVertice, class TipoArco>
+int Grafo<TipoVertice, TipoArco>:: getGradoVertice(const TipoVertice &e) const
+{
+    Nodo *temp = this->inicio;
+    while (temp != nullptr && temp->etiqueta != e)
+    {
+        temp = temp->sig;
+    }
+    assert(temp != nullptr && temp->etiqueta == e);
+    return temp->adyacencias+temp->incidencias;
+}
 
 template <class TipoVertice, class TipoArco>
+int Grafo<TipoVertice, TipoArco>:: getGrado() const{
+    return this->grado;
+}
+template <class TipoVertice, class TipoArco>
 int Grafo<TipoVertice, TipoArco>:: getNumeroVertices() const{
-    return this->nnodos;
+    return this->nVertices;
 }
 
 template <class TipoVertice, class TipoArco>
@@ -150,6 +172,17 @@ int  Grafo<TipoVertice, TipoArco>::getNumAdyacentes(const TipoVertice &etiqueta)
     while (temp!=nullptr && temp->etiqueta!=etiqueta)
         temp=temp->sig;
     assert(temp!=nullptr && temp->etiqueta==etiqueta);
+    return temp->adyacencias;
+}
+template <class TipoVertice, class TipoArco>
+int  Grafo<TipoVertice, TipoArco>::getNumAdyacentesPos(int i) const
+{
+    Nodo*temp = this->inicio;
+    while (temp!=nullptr && i>0){
+        temp=temp->sig;
+        i--;
+    }
+    assert(temp!=nullptr && i==0);
     return temp->adyacencias;
 }
 
@@ -182,7 +215,36 @@ TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerAdyacentes(const TipoVertice &
         return nullptr;
     }
 }
+template <class TipoVertice, class TipoArco>
+TipoVertice *Grafo<TipoVertice, TipoArco>::obtenerAdyacentesPos(int pos) const
+{
 
+    Nodo *temp = this->inicio;
+    while (temp != nullptr && pos>0)
+    {
+        temp = temp->sig;
+        pos--;
+    }
+
+    if (temp != nullptr && temp->adyacencias>0)
+    {
+        TipoVertice *arcos = new TipoVertice[temp->adyacencias];
+        int i = 0;
+        Arco *aux = temp->ady;
+        while (aux != nullptr)
+        {
+            arcos[i] = aux->destino->etiqueta;
+            aux = aux->sig;
+            i++;
+            
+        }
+        return arcos;
+    }
+    else
+    {
+        return nullptr;
+    }
+}
 template class Grafo<int, int>;
 template class Grafo<char, double>;
 template class Grafo<char, int>;

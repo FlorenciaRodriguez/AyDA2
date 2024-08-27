@@ -25,7 +25,6 @@ int main(int argc, char **argv)
 	g->agregarArco('c', 'f', 2);
 	g->agregarArco('h', 'j', 2);
 
-	dfsForest<char, int>(g);
 
 	return 0;
 }

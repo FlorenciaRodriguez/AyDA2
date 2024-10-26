@@ -113,7 +113,7 @@ int main()
     string * pintas = new string[N];
     pintas[0] = "Porter";
     pintas[1] = "IPA";
-    pintas[2] = "Honney";
+    pintas[2] = "Blonde";
     pintas[3] = "Amber";
     string * tapas = new string[N];
     tapas[0] = "Rabas";
